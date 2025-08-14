@@ -4,11 +4,19 @@ function randomInRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-export function popConfetti() {
+export function popConfetti(num: number) {
+  // launch a few confetti from the left edge
   confetti({
-    angle: randomInRange(35, 155),
-    spread: randomInRange(60, 80),
-    particleCount: randomInRange(50, 100),
-    origin: { y: 0.6 },
+    particleCount: 3 * num,
+    angle: 60,
+    spread: 55,
+    origin: { x: 0 },
+  });
+  // and launch a few from the right edge
+  confetti({
+    particleCount: 3 * num,
+    angle: 120,
+    spread: 55,
+    origin: { x: 1 },
   });
 }

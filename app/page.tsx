@@ -15,8 +15,10 @@ export default function Home() {
 
     source.onmessage = (event) => {
       setMessage(event.data);
-      popConfetti();
+      const num = parseInt(event.data);
+      popConfetti(num);
     };
+
     source.onerror = (error) => {
       console.error("EventSource error:", error);
       source.close();

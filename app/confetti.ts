@@ -1,9 +1,5 @@
 import confetti from "canvas-confetti";
 
-function randomInRange(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
-
 export function popConfetti(num: number) {
   // launch a few confetti from the left edge
   confetti({

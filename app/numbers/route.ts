@@ -16,9 +16,13 @@ function* createDie(sides = 6) {
 const encoder = new TextEncoder();
 
 export async function GET(request: NextRequest) {
-  const sp = request.nextUrl.searchParams as any;
+  const sp = request.nextUrl.searchParams.get("s");
+  let sides = 6;
+  try {
+    if (sp) sides = parseInt(sp);
+  } catch {}
 
-  const die = createDie(sp?.s ?? 6);
+  const die = createDie(sides);
 
   const stream = new ReadableStream({
     async pull(controller) {
